@@ -42,12 +42,12 @@ function Register() {
 
                 <div className="unique-image-section">
                     <div className="unique-image-wrapper">
-                        <img src="./mesh-gradient.png" alt="" />
+                        <img src="./fondo.jpeg" alt="" />
                     </div>
 
                     <div className="unique-content-container">
                         <h1 className="unique-section-heading">
-                            La tienda en línea para deportistas exigentes. Con variedad de productos para fútbol, básquetbol, tenis, voleibol y otros deportes <span>GREP</span>
+                            La tienda en línea para deportistas exigentes. Con variedad de productos para fútbol, básquetbol, tenis, voleibol y otros deportes <span>CHAYOTE</span>
                         </h1>
                         <p className="unique-section-paragraph">
                             Tu cancha, tu tienda
@@ -58,9 +58,7 @@ function Register() {
                 <div className="unique-form-section">
                     <div className="unique-form-wrapper">
                         <div className="unique-logo-container">
-                            <a href="/index" className="unique-logo-container">
-                                <img src="./logo.png" alt="Logo" />
-                            </a>
+                                <img src="./Zombatar.jpg" alt="Logo" />
                         </div>
 
                         <h2>Bienvenido 👋🏻</h2>
@@ -102,6 +100,7 @@ function Register() {
                 </div>
 
             </section>
+            <br />
 
         </div >
     );

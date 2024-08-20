@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Stack, Image, Nav } from 'react-bootstrap';
+import { Container, Row, Col, Stack, Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
 function Footer() {
@@ -9,30 +9,30 @@ function Footer() {
                 <Row className="bg-dark text-white p-4">
                     <Col className="mx-5">
                         <Stack>
-                            <Image
-                                src="https://www.shutterstock.com/image-vector/abstract-initial-letter-d-logo-600nw-2055050639.jpg"
+                            <img
+                                src='/logofooter.jpg'
                                 alt="company logo"
                                 rounded
                                 width={150}
                                 height={150}
                             />
-                            <h2>GREP</h2>
+                            <h2>CHAYOTE</h2>
                             <p>Tu cancha, tu tienda</p>
                         </Stack>
                     </Col>
                     <Col>
                         <Nav className="flex-column fs-5">
-                            Useful Links
-                            <NavLink href="#" className="text-white">Home</NavLink>
-                            <NavLink href="#" className="text-white">About</NavLink>
-                            <NavLink href="#" className="text-white">Products</NavLink>
-                            <NavLink href="#" className="text-white">We're hiring!</NavLink>
+                            Links
+                            <NavLink href="#" className="text-white">algo</NavLink>
+                            <NavLink href="#" className="text-white">algo</NavLink>
+                            <NavLink href="#" className="text-white">algo</NavLink>
+                            <NavLink href="#" className="text-white">algo</NavLink>
                         </Nav>
                     </Col>
                     <Col>
-                        <h4>Contactanos!</h4>
-                        <p>email@fakeemail.com</p>
-                        <p>Phone: +1(800)867-5309</p>
+                        <h4>Contactanos:</h4>
+                        <p>gabrielrojasokk@gmail.com</p>
+                        <p>Teléfono: +54 (9) 367-4 414972</p>
                     </Col>
                 </Row>
             </Container>

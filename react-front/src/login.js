@@ -10,29 +10,39 @@ function Login() {
 
   useEffect(() => {
     if (localStorage.getItem('user-info')) {
-      navigate('/Home');
+      navigate('/home');
     }
   }, [navigate]);
 
   async function login() {
-    console.warn(email, password);
     let item = { email, password };
-    let result = await fetch('http://localhost:8000/api/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify(item),
-    });
 
-    result = await result.json();
-
-    if (result.error) {
-      setError(result.error);
+    if (email === 'admin@gmail.com' && password === 'admin123') {
+      const adminInfo = {
+        email: 'admin@gmail.com',
+        name: 'admin',
+        role: 'admin' 
+      };
+      localStorage.setItem('user-info', JSON.stringify(adminInfo));
+      navigate('/home');
     } else {
-      localStorage.setItem('user-info', JSON.stringify(result));
-      navigate('/Home');
+      let result = await fetch('http://localhost:8000/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(item),
+      });
+
+      result = await result.json();
+
+      if (result.error) {
+        setError(result.error);
+      } else {
+        localStorage.setItem('user-info', JSON.stringify(result));
+        navigate('/home');
+      }
     }
   }
 
@@ -42,11 +52,11 @@ function Login() {
       <section className="unique-container">
         <div className="unique-image-section">
           <div className="unique-image-wrapper">
-            <img src="./mesh-gradient.png" alt="" />
+            <img src="./fondo.jpeg" alt="" />
           </div>
           <div className="unique-content-container">
             <h1 className="unique-section-heading">
-              La tienda en línea para deportistas exigentes. Con variedad de productos para fútbol, básquetbol, tenis, voleibol y otros deportes <span>GREP</span>
+              La tienda en línea para deportistas exigentes. Con variedad de productos para fútbol, básquetbol, tenis, voleibol y otros deportes <span>CHAYOTE</span>
             </h1>
             <p className="unique-section-paragraph">
               Tu cancha, tu tienda
@@ -57,15 +67,12 @@ function Login() {
         <div className="unique-form-section">
           <div className="unique-form-wrapper">
             <div className="unique-logo-container">
-              <a href="/index" className="unique-logo-container">
-                <img src="./logo.png" alt="Logo" />
-              </a>
+                <img src="./Zombatar.jpg" alt="Logo" />
             </div>
 
             <h2>Hola 👋🏻</h2>
             <p>Cargue sus datos aquí</p>
 
-            {}
             {error && <div className="error-message" style={{ color: 'red' }}>{error}</div>}
 
             <div className="unique-input-container">
@@ -85,7 +92,7 @@ function Login() {
                 <label htmlFor="remember-me">Recordar inicio</label>
               </div>
 
-              <a href="/Register">¿No tiene una cuenta? Registrarse</a>
+              <a href="/register">¿No tiene una cuenta? Registrarse</a>
             </div>
 
             <button className="unique-login-btn" onClick={login}>Iniciar sesión</button>
@@ -93,14 +100,16 @@ function Login() {
             <div className="unique-or-divider">o</div>
 
             <button className="unique-google-signin">
-              <object data="./google.svg">google logo xd</object>
+              <object data="./google.svg">google logo</object>
               <span>Inicia sesión con Google</span>
             </button>
           </div>
         </div>
       </section>
+      <br/>
     </div>
   );
 }
 
 export default Login;
+
