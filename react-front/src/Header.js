@@ -8,20 +8,20 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
 function Header() {
-    let user = JSON.parse(localStorage.getItem('user-info'))
-    function logout() {
-        localStorage.clear()
-        navigate('/login')
-    }
+    let user = JSON.parse(localStorage.getItem('user-info'));
+    const navigate = useNavigate();
 
-    const navigate = useNavigate()
+    function logout() {
+        localStorage.clear();
+        navigate('/login');
+    }
 
     return (
         <>
             {[false].map((expand) => (
                 <Navbar sticky="top" bg="dark" data-bs-theme="dark" key={expand} expand={expand} className="bg-body-tertiary mb-3">
                     <Container fluid>
-                        <Navbar.Brand href="/nos">GREP</Navbar.Brand>
+                        <Navbar.Brand as={Link} to="/nos">GREP</Navbar.Brand>
 
                         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
                         <Navbar.Offcanvas bg="dark" data-bs-theme="dark"
@@ -29,7 +29,6 @@ function Header() {
                             aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
                             placement="end"
                         >
-
                             <Offcanvas.Header closeButton>
                                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
                                     Menu
@@ -37,42 +36,27 @@ function Header() {
                             </Offcanvas.Header>
                             <Offcanvas.Body>
                                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                                    <Nav.Link href="/Home">Home</Nav.Link>
+                                    <Nav.Link as={Link} to="/Home">Home</Nav.Link>
 
-                                    {
-                                        localStorage.getItem('user-info') ?
-                                            <NavDropdown title={user && user.name} id="offcanvasNavbarDropdown">
-                                                <NavDropdown.Item onClick={logout}>Cerrar Sesión</NavDropdown.Item>
-                                            </NavDropdown>
-                                            : null
-                                    }
+                                    {localStorage.getItem('user-info') && (
+                                        <NavDropdown title={user && user.name} id="offcanvasNavbarDropdown">
+                                            <NavDropdown.Item onClick={logout}>Cerrar Sesión</NavDropdown.Item>
+                                        </NavDropdown>
+                                    )}
 
-                                    <NavDropdown
-                                        title="Ver más"
-                                        id={`offcanvasNavbarDropdown-expand-${expand}`}
-                                    >
-                                        {
-                                            localStorage.getItem('user-info') ?
-                                                <>
-                                                    <NavDropdown.Item>
-                                                        <Link to="/AddProduct">Agregar Producto</Link>
-                                                    </NavDropdown.Item>
-                                                    <NavDropdown.Item>
-                                                        <Nav.Link href="/smth">algo mas</Nav.Link>
-                                                    </NavDropdown.Item>
-
-                                                </>
-                                                :
-                                                <>
-                                                    <NavDropdown.Item href="/Login">
-                                                        <Link to="/Login">Iniciar sesión</Link>
-                                                    </NavDropdown.Item>
-                                                    <NavDropdown.Divider />
-                                                    <NavDropdown.Item href="/Register">
-                                                        <Link to="/Register">Registrarse</Link>
-                                                    </NavDropdown.Item>
-                                                </>
-                                        }
+                                    <NavDropdown title="Ver más" id={`offcanvasNavbarDropdown-expand-${expand}`}>
+                                        {localStorage.getItem('user-info') ? (
+                                            <>
+                                                <NavDropdown.Item as={Link} to="/AddProduct">Agregar Producto</NavDropdown.Item>
+                                                <NavDropdown.Item as={Link} to="/ProductList">Lista de Productos</NavDropdown.Item>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <NavDropdown.Item as={Link} to="/Login">Iniciar sesión</NavDropdown.Item>
+                                                <NavDropdown.Divider />
+                                                <NavDropdown.Item as={Link} to="/Register">Registrarse</NavDropdown.Item>
+                                            </>
+                                        )}
                                     </NavDropdown>
                                 </Nav>
                                 <Form className="d-flex">
@@ -88,11 +72,8 @@ function Header() {
                         </Navbar.Offcanvas>
                     </Container>
                 </Navbar>
-
             ))}
-
         </>
-
     );
 }
 

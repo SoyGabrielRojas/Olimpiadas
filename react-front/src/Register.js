@@ -4,11 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 function Register() {
     useEffect(() => {
-        if (localStorage.getItem('user-info')) 
-            {
+        if (localStorage.getItem('user-info')) {
             navigate('/Home')
         }
-    }, [])
+    })
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -48,10 +47,10 @@ function Register() {
 
                     <div className="unique-content-container">
                         <h1 className="unique-section-heading">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit <span>Algo</span>
+                            La tienda en línea para deportistas exigentes. Con variedad de productos para fútbol, básquetbol, tenis, voleibol y otros deportes <span>GREP</span>
                         </h1>
                         <p className="unique-section-paragraph">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                            Tu cancha, tu tienda
                         </p>
                     </div>
                 </div>

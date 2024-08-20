@@ -1,6 +1,7 @@
 import Header from './Header';
 import { useState } from 'react';
 import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom'; // Importa el hook useNavigate
 
 function AddProduct() {
     const [name, setName] = useState("");
@@ -8,6 +9,8 @@ function AddProduct() {
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
+    
+    const navigate = useNavigate(); // Usa el hook useNavigate
 
     async function addProduct() {
         console.log("Producto a agregar:", name, file, price, description);
@@ -27,6 +30,7 @@ function AddProduct() {
             if (result.ok) {
                 setSuccessMessage("Producto agregado exitosamente");
                 clearForm();
+                navigate('/productlist'); // Redirige a /productlist
             } else {
                 alert("Error al agregar el producto");
             }

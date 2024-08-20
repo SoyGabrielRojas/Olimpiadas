@@ -16,8 +16,8 @@ function Footer() {
                                 width={150}
                                 height={150}
                             />
-                            <h2>Company Name</h2>
-                            <p>Company tagline here</p>
+                            <h2>GREP</h2>
+                            <p>Tu cancha, tu tienda</p>
                         </Stack>
                     </Col>
                     <Col>
@@ -30,7 +30,7 @@ function Footer() {
                         </Nav>
                     </Col>
                     <Col>
-                        <h4>Contact us!</h4>
+                        <h4>Contactanos!</h4>
                         <p>email@fakeemail.com</p>
                         <p>Phone: +1(800)867-5309</p>
                     </Col>

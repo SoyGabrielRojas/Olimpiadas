@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Protected(props) {
-  let Cmp = props.Cmp;
+  let Cmp = props.Cmp;  
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,3 +19,4 @@ function Protected(props) {
 }
 
 export default Protected;
+

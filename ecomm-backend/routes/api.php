@@ -12,3 +12,8 @@ Route::get('/user', function (Request $request) {
 Route ::post('register', [UserController::class, 'Register']);
 Route ::post('login', [UserController::class, 'login']);
 Route ::post('addproduct', [ProductController::class, 'addProduct']);
+Route ::get('list', [ProductController::class, 'list']);
+Route ::delete('delete/{id}', [ProductController::class, 'delete']);
+Route ::get('product/{id}', [ProductController::class, 'getProduct']);
+Route::post('product/update/{id}', [ProductController::class, 'updateProduct']);
+Route::get('search/{key}', [ProductController::class, 'search']);

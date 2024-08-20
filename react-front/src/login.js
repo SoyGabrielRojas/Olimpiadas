@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');  // Estado para manejar el error
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,9 +28,8 @@ function Login() {
 
     result = await result.json();
 
-    // Verifica si hubo un error en la autenticación
     if (result.error) {
-      setError(result.error);  // Muestra el error desde la respuesta del servidor
+      setError(result.error);
     } else {
       localStorage.setItem('user-info', JSON.stringify(result));
       navigate('/Home');
@@ -47,10 +46,10 @@ function Login() {
           </div>
           <div className="unique-content-container">
             <h1 className="unique-section-heading">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit <span>Algo</span>
+              La tienda en línea para deportistas exigentes. Con variedad de productos para fútbol, básquetbol, tenis, voleibol y otros deportes <span>GREP</span>
             </h1>
             <p className="unique-section-paragraph">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Tu cancha, tu tienda
             </p>
           </div>
         </div>
@@ -66,7 +65,7 @@ function Login() {
             <h2>Hola 👋🏻</h2>
             <p>Cargue sus datos aquí</p>
 
-            {/* Si hay un error, mostrarlo */}
+            {}
             {error && <div className="error-message" style={{ color: 'red' }}>{error}</div>}
 
             <div className="unique-input-container">
