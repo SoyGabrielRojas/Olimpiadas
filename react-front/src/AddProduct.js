@@ -47,7 +47,7 @@ function AddProduct() {
     }
 
     return (
-        <div>
+        <div className='bg-secondary'>
             <Header />
             <Container className="mt-5">
                 <h1 className="text-center mb-4">Agregar Producto</h1>

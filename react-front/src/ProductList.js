@@ -35,7 +35,7 @@ function ProductList() {
     const handleClose = () => setShow(false);
 
     return (
-        <div>
+        <div className='bg-secondary'>
             <Header />
             <Container className="mt-5">
                 <h1 className="text-center mb-4">Lista de Productos</h1>

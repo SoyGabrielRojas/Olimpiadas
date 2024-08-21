@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Container, Button, FormControl, Image, Modal } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 
 function Cart() {
@@ -7,6 +8,7 @@ function Cart() {
     const [show, setShow] = useState(false);
     const [selectedImage, setSelectedImage] = useState('');
     const user_id = 1;
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchCartItems();
@@ -57,6 +59,25 @@ function Cart() {
         }
     }
 
+    async function purchaseItem(product_id) {
+        const response = await fetch('http://localhost:8000/api/purchase', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                user_id: user_id,
+                product_id: product_id,
+            }),
+        });
+
+        if (response.ok) {
+            navigate('/compras');
+        } else {
+            alert('Error al realizar la compra');
+        }
+    }
+
     const handleShow = (imageUrl) => {
         setSelectedImage(imageUrl);
         setShow(true);
@@ -65,7 +86,7 @@ function Cart() {
     const handleClose = () => setShow(false);
 
     return (
-        <div>
+        <div className='bg-secondary'>
             <Header />
             <Container className="mt-5">
                 <h1 className="text-center mb-4">Tu Carrito</h1>
@@ -106,6 +127,13 @@ function Cart() {
                                 </td>
                                 <td>
                                     <Button
+                                        variant="success"
+                                        onClick={() => purchaseItem(item.product.id)}
+                                        className="me-2"
+                                    >
+                                        Comprar
+                                    </Button>
+                                    <Button
                                         variant="danger"
                                         onClick={() => removeCartItem(item.product.id)}
                                     >
@@ -119,13 +147,15 @@ function Cart() {
             </Container>
 
             <Modal show={show} onHide={handleClose} centered>
-                <Modal.Header closeButton>
-                    <Modal.Title>Vista previa de la imagen</Modal.Title>
+                <Modal.Header
+                    closeButton>
+                    <Modal.Title>Vista Previa de la Imagen</Modal.Title>
                 </Modal.Header>
-                <Modal.Body className="text-center">
-                    <Image src={selectedImage} fluid />
+                <Modal.Body>
+                    <Image src={selectedImage} alt="Preview" fluid />
                 </Modal.Body>
             </Modal>
+            <br />
         </div>
     );
 }

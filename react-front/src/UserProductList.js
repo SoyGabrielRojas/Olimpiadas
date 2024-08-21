@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Button, Container, Image, Modal } from 'react-bootstrap';
+import { Card, Button, Container, Image, Modal, Row, Col } from 'react-bootstrap';
 import Header from './Header';
+import { useNavigate } from 'react-router-dom';
 
 function UserProductList() {
     const [data, setData] = useState([]);
     const [show, setShow] = useState(false);
     const [selectedImage, setSelectedImage] = useState('');
     const user_id = 1;
+    const navigate = useNavigate(); // Hook para redirigir
+    const imageSize = { width: '100%', height: '200px', objectFit: 'cover' }; // Tamaño uniforme de imágenes
 
     useEffect(() => {
         getData();
@@ -32,6 +35,7 @@ function UserProductList() {
 
         if (response.ok) {
             alert('Producto agregado al carrito!');
+            navigate('/cart'); // Redirigir al carrito
         } else {
             alert('Error al agregar al carrito');
         }
@@ -45,47 +49,36 @@ function UserProductList() {
     const handleClose = () => setShow(false);
 
     return (
-        <div>
+        <div className='bg-secondary'>
             <Header />
             <Container className="mt-5">
                 <h1 className="text-center mb-4">Lista de Productos</h1>
-                <Table striped bordered hover responsive="md" className="table-sm">
-                    <thead className="table-dark">
-                        <tr className="text-center">
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Precio</th>
-                            <th>Descripción</th>
-                            <th>Imagen</th>
-                            <th>Operaciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data.map((item) => (
-                            <tr key={item.id} className="text-center align-middle">
-                                <td>{item.id}</td>
-                                <td>{item.name}</td>
-                                <td>${item.price}</td>
-                                <td>{item.description}</td>
-                                <td>
-                                    <Image
-                                        src={`http://localhost:8000/storage/${item.file_path}`}
-                                        alt={item.name}
-                                        thumbnail
-                                        fluid
-                                        style={{ maxWidth: '100px', cursor: 'pointer' }}
-                                        onClick={() => handleShow(`http://localhost:8000/storage/${item.file_path}`)}
-                                    />
-                                </td>
-                                <td>
+                <Row>
+                    {data.map((item) => (
+                        <Col key={item.id} md={4} className="mb-4">
+                            <Card className="bg-dark text-white">
+                                <Card.Img
+                                    variant="top"
+                                    src={`http://localhost:8000/storage/${item.file_path}`}
+                                    style={imageSize}
+                                    onClick={() => handleShow(`http://localhost:8000/storage/${item.file_path}`)}
+                                />
+                                <Card.Body>
+                                    <Card.Title>{item.name}</Card.Title>
+                                    <Card.Text>
+                                        {item.description}
+                                    </Card.Text>
+                                    <Card.Text>
+                                        <strong>Precio: ${item.price}</strong>
+                                    </Card.Text>
                                     <Button variant="primary" onClick={() => addToCart(item.id)}>
                                         Agregar al carrito
                                     </Button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </Table>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    ))}
+                </Row>
             </Container>
 
             <Modal show={show} onHide={handleClose} centered>

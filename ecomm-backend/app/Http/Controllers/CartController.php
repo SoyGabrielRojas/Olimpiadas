@@ -96,4 +96,5 @@ class CartController extends Controller
             return response()->json(['error' => 'Error al eliminar el producto del carrito', 'details' => $e->getMessage()], 500);
         }
     }
+    
 }
