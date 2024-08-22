@@ -30,7 +30,7 @@ function Header() {
             {[false].map((expand) => (
                 <Navbar sticky="top" bg="dark" data-bs-theme="dark" key={expand} expand={expand} className="bg-body-tertiary mb-3">
                     <Container fluid>
-                        <Navbar.Brand as={Link} to="/home">GREP</Navbar.Brand>
+                        <Navbar.Brand as={Link} to="/home">CHAYOTE</Navbar.Brand>
                         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
                         <Navbar.Offcanvas bg="dark" data-bs-theme="dark"
                             id={`offcanvasNavbar-expand-${expand}`}
@@ -56,6 +56,8 @@ function Header() {
                                                 <NavDropdown title="Acciones" id="adminDropdown">
                                                     <NavDropdown.Item as={Link} to="/addProduct">Agregar Producto</NavDropdown.Item>
                                                     <NavDropdown.Item as={Link} to="/productList">Lista de Productos</NavDropdown.Item>
+                                                    <NavDropdown.Item as={Link} to="/envios">Pedidos</NavDropdown.Item>
+                                                    <NavDropdown.Item as={Link} to="/entregados">Pedidos Entregados</NavDropdown.Item>
                                                 </NavDropdown>
                                             ) : (
                                                 <NavDropdown title="Acciones" id="userDropdown">

@@ -11,6 +11,8 @@ import SearchProduct from './SearchProduct';
 import UserProductList from './UserProductList';
 import Cart from './Cart';
 import Compras from './Compras';
+import EnProcesoDeEnvio from './EnProcesoDeEnvio';
+import ProductosEntregados from './ProductosEntregados';
 import Protected from './Protected';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 
@@ -24,6 +26,8 @@ function App() {
           <Route path="/addProduct" element={<Protected Cmp={AddProduct} adminOnly />} />
           <Route path="/update/:id" element={<Protected Cmp={UpdateProduct} adminOnly />} />
           <Route path="/productList" element={<Protected Cmp={ProductList} adminOnly />} />
+          <Route path="/entregados" element={<Protected Cmp={ProductosEntregados} adminOnly />} />
+          <Route path="/envios" element={<Protected Cmp={EnProcesoDeEnvio} adminOnly />} />
           <Route path="/search/:searchTerm" element={<Protected Cmp={SearchProduct} />} />
           <Route path="/userProductList" element={<Protected Cmp={UserProductList} />} />
           <Route path="/cart" element={<Protected Cmp={Cart} />} />

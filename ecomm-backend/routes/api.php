@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\DeliveryController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -38,3 +39,5 @@ Route::post('purchase', [PurchaseController::class, 'purchaseItem']);
 Route::get('purchases/{user_id}', [PurchaseController::class, 'getPurchases']);
 Route::post('purchase/cancel', [PurchaseController::class, 'cancelPurchase']);
 
+Route::post('/deliver', [DeliveryController::class, 'markAsDelivered']);
+Route::get('/delivered-products/{user_id}', [DeliveryController::class, 'getDeliveredProducts']);
