@@ -9,6 +9,5 @@ class DeliveredProduct extends Model
 {
     use HasFactory;
 
-    // Si usas una tabla con nombre personalizado, puedes definirla aquí
     protected $table = 'productos_entregados';
 }

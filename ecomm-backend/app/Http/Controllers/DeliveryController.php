@@ -11,16 +11,13 @@ class DeliveryController extends Controller
     public function markAsDelivered(Request $req)
     {
         try {
-            // Validar que el campo 'id' esté presente y que exista en la tabla 'compras'
             $validated = $req->validate([
-                'id' => 'required|integer|exists:compras,id',  // Cambié 'purchase_id' por 'id'
+                'id' => 'required|integer|exists:compras,id',  
             ]);
 
-            // Buscar la compra por su 'id'
-            $purchase = Purchase::find($validated['id']);  // Cambié a 'id'
+            $purchase = Purchase::find($validated['id']);  
 
             if ($purchase) {
-                // Crear el registro en la tabla 'productos_entregados'
                 $deliveredProduct = new DeliveredProduct;
                 $deliveredProduct->user_id = $purchase->user_id;
                 $deliveredProduct->product_id = $purchase->product_id;
@@ -30,7 +27,6 @@ class DeliveryController extends Controller
                 $deliveredProduct->cantidad = $purchase->cantidad;
                 $deliveredProduct->save();
 
-                // Eliminar la compra de la tabla 'compras'
                 $purchase->delete();
 
                 return response()->json(['message' => 'Producto marcado como entregado exitosamente'], 200);
@@ -42,7 +38,6 @@ class DeliveryController extends Controller
         }
     }
 
-    // Obtener productos entregados
     public function getDeliveredProducts($user_id)
     {
         try {

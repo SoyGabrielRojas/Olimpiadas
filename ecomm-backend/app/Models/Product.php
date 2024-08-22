@@ -16,7 +16,6 @@ class Product extends Model
         'file_path', 
     ];
 
-    // Relación con el modelo Cart
     public function cart()
     {
         return $this->hasMany(Cart::class);
