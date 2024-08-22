@@ -10,7 +10,7 @@ function AddProduct() {
     const [description, setDescription] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
     
-    const navigate = useNavigate(); // Usa el hook useNavigate
+    const navigate = useNavigate(); 
 
     async function addProduct() {
         console.log("Producto a agregar:", name, file, price, description);
@@ -30,7 +30,7 @@ function AddProduct() {
             if (result.ok) {
                 setSuccessMessage("Producto agregado exitosamente");
                 clearForm();
-                navigate('/productlist'); // Redirige a /productlist
+                navigate('/productlist'); 
             } else {
                 alert("Error al agregar el producto");
             }

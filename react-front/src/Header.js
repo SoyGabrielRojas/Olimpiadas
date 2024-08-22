@@ -56,7 +56,7 @@ function Header() {
                                                 <NavDropdown title="Acciones" id="adminDropdown">
                                                     <NavDropdown.Item as={Link} to="/addProduct">Agregar Producto</NavDropdown.Item>
                                                     <NavDropdown.Item as={Link} to="/productList">Lista de Productos</NavDropdown.Item>
-                                                    <NavDropdown.Item as={Link} to="/envios">Pedidos</NavDropdown.Item>
+                                                    <NavDropdown.Item as={Link} to="/pedidos">Pedidos</NavDropdown.Item>
                                                     <NavDropdown.Item as={Link} to="/entregados">Pedidos Entregados</NavDropdown.Item>
                                                 </NavDropdown>
                                             ) : (

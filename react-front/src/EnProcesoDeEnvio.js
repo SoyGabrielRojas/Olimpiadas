@@ -37,6 +37,22 @@ function EnProcesoDeEnvio() {
         }
     }
 
+    async function cancelPurchase(id) {  
+        const response = await fetch('http://localhost:8000/api/purchase/cancel', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ purchase_id: id }),
+        });
+
+        if (response.ok) {
+            fetchPurchases();
+        } else {
+            alert('Error al cancelar la compra');
+        }
+    }
+
     return (
         <div className='bg-secondary'>
             <Header />
@@ -45,6 +61,7 @@ function EnProcesoDeEnvio() {
                 <Table striped bordered hover responsive="md" className="table-sm">
                     <thead className="table-dark">
                         <tr className="text-center">
+                            <th>ID Usuario</th>
                             <th>ID Producto</th>
                             <th>Nombre</th>
                             <th>Imagen</th>
@@ -56,6 +73,7 @@ function EnProcesoDeEnvio() {
                     <tbody>
                         {purchases.map((item) => (
                             <tr key={item.id} className="text-center align-middle">
+                                <td>{item.user_id}</td>
                                 <td>{item.product_id}</td>
                                 <td>{item.nombre}</td>
                                 <td>
@@ -75,6 +93,13 @@ function EnProcesoDeEnvio() {
                                         onClick={() => deliverProduct(item.id)} // Aquí también cambié a 'item.id'
                                     >
                                         Entregar
+                                    </Button>
+                                    <Button
+                                        variant="danger"
+                                        onClick={() => cancelPurchase(item.id)}
+                                        className="ms-2"
+                                    >
+                                        Anular Compra
                                     </Button>
                                 </td>
                             </tr>

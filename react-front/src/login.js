@@ -2,6 +2,7 @@ import Header from './Header';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Form } from 'react-bootstrap'; // Importa los componentes necesarios de Bootstrap
+import { Alert } from 'bootstrap';
 
 function Login() {
   const [email, setEmail] = useState('');
