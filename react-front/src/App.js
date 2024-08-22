@@ -13,6 +13,7 @@ import Cart from './Cart';
 import Compras from './Compras';
 import EnProcesoDeEnvio from './EnProcesoDeEnvio';
 import ProductosEntregados from './ProductosEntregados';
+import Ventas from './Ventas';
 import Protected from './Protected';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/productList" element={<Protected Cmp={ProductList} adminOnly />} />
           <Route path="/entregados" element={<Protected Cmp={ProductosEntregados} adminOnly />} />
           <Route path="/pedidos" element={<Protected Cmp={EnProcesoDeEnvio} adminOnly />} />
+          <Route path="/ventas" element={<Protected Cmp={Ventas} adminOnly />} />
           <Route path="/search/:searchTerm" element={<Protected Cmp={SearchProduct} />} />
           <Route path="/userProductList" element={<Protected Cmp={UserProductList} />} />
           <Route path="/cart" element={<Protected Cmp={Cart} />} />

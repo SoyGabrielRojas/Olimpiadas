@@ -1,7 +1,7 @@
 import Header from './Header';
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
-import { Form} from 'react-bootstrap'; // Importa los componentes necesarios de Bootstrap
+import { Form} from 'react-bootstrap'; 
 
 function Register() {
     useEffect(() => {
@@ -13,7 +13,7 @@ function Register() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar contraseña
+    const [showPassword, setShowPassword] = useState(false); 
     const navigate = useNavigate();
 
     async function signUp() {

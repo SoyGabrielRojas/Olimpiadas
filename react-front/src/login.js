@@ -1,13 +1,12 @@
 import Header from './Header';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { Form } from 'react-bootstrap'; // Importa los componentes necesarios de Bootstrap
-import { Alert } from 'bootstrap';
+import { Form } from 'react-bootstrap'; 
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar contraseña
+  const [showPassword, setShowPassword] = useState(false); 
   const [error, setError] = useState('');
   const navigate = useNavigate();
 

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Container, Button, Image } from 'react-bootstrap';
+import { Table, Container, Image } from 'react-bootstrap';
 import Header from './Header';
 
-function ProductosEntregados() {
+function Ventas() {
     const [deliveredProducts, setDeliveredProducts] = useState([]);
     const user_id = 1; 
 
@@ -20,7 +20,7 @@ function ProductosEntregados() {
         <div className='bg-secondary'>
             <Header />
             <Container className="mt-5">
-                <h1 className="text-center mb-4">Productos Entregados</h1>
+                <h1 className="text-center mb-4">Ventas</h1>
                 <Table striped bordered hover responsive="md" className="table-sm">
                     <thead className="table-dark">
                         <tr className="text-center">
@@ -30,7 +30,6 @@ function ProductosEntregados() {
                             <th>Imagen</th>
                             <th>Precio Total</th>
                             <th>Cantidad</th>
-                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,11 +49,6 @@ function ProductosEntregados() {
                                 </td>
                                 <td>${item.precio_total}</td>
                                 <td>{item.cantidad}</td>
-                                <td>
-                                    <Button variant="primary" onClick={() => alert('Función de cobrar será por terceros')}>
-                                        Cobrar
-                                    </Button>
-                                </td>
                             </tr>
                         ))}
                     </tbody>
@@ -65,4 +59,4 @@ function ProductosEntregados() {
     );
 }
 
-export default ProductosEntregados;
+export default Ventas;
