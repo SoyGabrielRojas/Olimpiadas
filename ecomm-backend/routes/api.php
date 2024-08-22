@@ -12,6 +12,10 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 // Rutas de autenticación
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::post('/user/validate/{id}', [UserController::class, 'validateUser']);
+    Route::post('/user/unvalidate/{id}', [UserController::class, 'unvalidateUser']);
+});
 Route::post('register', [UserController::class, 'Register']);
 Route::post('login', [UserController::class, 'login']);
 

@@ -1,25 +1,28 @@
 import Header from './Header';
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
+import { Form} from 'react-bootstrap'; // Importa los componentes necesarios de Bootstrap
 
 function Register() {
     useEffect(() => {
         if (localStorage.getItem('user-info')) {
             navigate('/Home')
         }
-    })
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const navigate = useNavigate()
+    });
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar contraseña
+    const navigate = useNavigate();
 
     async function signUp() {
         let item = {
             name: name,
             email: email,
             password: password
-        }
-        console.warn(item)
+        };
+        console.warn(item);
 
         let result = await fetch('http://localhost:8000/api/register', {
             method: 'POST',
@@ -28,11 +31,10 @@ function Register() {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }
-        })
-        result = await result.json()
-        localStorage.setItem('user-info', JSON.stringify(result))
+        });
+        result = await result.json();
+        localStorage.setItem('user-info', JSON.stringify(result));
         navigate('/Home');
-
     }
 
     return (
@@ -58,7 +60,7 @@ function Register() {
                 <div className="unique-form-section">
                     <div className="unique-form-wrapper">
                         <div className="unique-logo-container">
-                                <img src="./Zombatar.jpg" alt="Logo" />
+                            <img src="./Zombatar.jpg" alt="Logo" />
                         </div>
 
                         <h2>Bienvenido 👋🏻</h2>
@@ -67,22 +69,43 @@ function Register() {
                         <div className="unique-input-container">
                             <div className="unique-form-group">
                                 <label htmlFor="name">Nombre</label>
-                                <input type="name" id="name" value={name} autoComplete="off" onChange={(e) => { setName(e.target.value) }} />
+                                <input
+                                    type="text"
+                                    id="name"
+                                    value={name}
+                                    autoComplete="off"
+                                    onChange={(e) => { setName(e.target.value) }}
+                                />
                             </div>
                             <div className="unique-form-group">
                                 <label htmlFor="email">Email</label>
-                                <input type="email" id="email" value={email} autoComplete="off" onChange={(e) => { setEmail(e.target.value) }} />
+                                <input
+                                    type="email"
+                                    id="email"
+                                    value={email}
+                                    autoComplete="off"
+                                    onChange={(e) => { setEmail(e.target.value) }}
+                                />
                             </div>
                             <div className="unique-form-group">
                                 <label htmlFor="password">Contraseña</label>
-                                <input type="password" id="password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
+                                <input
+                                    type={showPassword ? 'text' : 'password'}
+                                    id="password"
+                                    value={password}
+                                    onChange={(e) => { setPassword(e.target.value) }}
+                                />
                             </div>
                         </div>
 
                         <div className="unique-remember-forgot">
                             <div className="unique-remember-me">
-                                <input type="checkbox" value="remember-me" id="remember-me" />
-                                <label htmlFor="remember-me">Recordarme</label>
+                                <Form.Check
+                                    type="checkbox"
+                                    id="show-password"
+                                    label="Mostrar contraseña"
+                                    onChange={() => setShowPassword(!showPassword)}
+                                />
                             </div>
 
                             <a href="/login">¿Ya tiene una cuenta? Iniciar sesión</a>

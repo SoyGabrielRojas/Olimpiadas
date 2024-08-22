@@ -23,7 +23,7 @@ function Footer() {
                     <Col>
                         <Nav className="flex-column fs-5">
                             Links
-                            <NavLink href="#" className="text-white">algo</NavLink>
+                            <a href="https://github.com/SoyGabrielRojas/Olimpiadas" className="text-white">Repositorio de GitHub</a>
                             <NavLink href="#" className="text-white">algo</NavLink>
                             <NavLink href="#" className="text-white">algo</NavLink>
                             <NavLink href="#" className="text-white">algo</NavLink>

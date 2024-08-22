@@ -24,7 +24,7 @@ function App() {
           <Route path="/addProduct" element={<Protected Cmp={AddProduct} adminOnly />} />
           <Route path="/update/:id" element={<Protected Cmp={UpdateProduct} adminOnly />} />
           <Route path="/productList" element={<Protected Cmp={ProductList} adminOnly />} />
-          <Route path="/search/:searchTerm" element={<Protected Cmp={SearchProduct} adminOnly />} />
+          <Route path="/search/:searchTerm" element={<Protected Cmp={SearchProduct} />} />
           <Route path="/userProductList" element={<Protected Cmp={UserProductList} />} />
           <Route path="/cart" element={<Protected Cmp={Cart} />} />
           <Route path="/compras" element={<Compras />} />
@@ -38,4 +38,3 @@ function App() {
 }
 
 export default App;
-

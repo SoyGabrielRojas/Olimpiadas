@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Purchase extends Model
 {
-    protected $table = 'compras'; // Especificar la tabla correcta
+    protected $table = 'compras'; 
 
     protected $fillable = [
         'user_id',

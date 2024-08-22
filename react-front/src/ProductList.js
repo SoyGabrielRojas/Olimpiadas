@@ -94,6 +94,7 @@ function ProductList() {
                     <Image src={selectedImage} fluid />
                 </Modal.Body>
             </Modal>
+            <br />
         </div>
     );
 }

@@ -1,10 +1,12 @@
 import Header from './Header';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import { Form } from 'react-bootstrap'; // Importa los componentes necesarios de Bootstrap
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar contraseña
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -78,18 +80,33 @@ function Login() {
             <div className="unique-input-container">
               <div className="unique-form-group">
                 <label htmlFor="email">Email</label>
-                <input type="email" id="email" value={email} autoComplete="off" onChange={(e) => { setEmail(e.target.value) }} />
+                <input
+                  type="email"
+                  id="email"
+                  value={email}
+                  autoComplete="off"
+                  onChange={(e) => { setEmail(e.target.value) }}
+                />
               </div>
               <div className="unique-form-group">
                 <label htmlFor="password">Contraseña</label>
-                <input type="password" id="password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  id="password"
+                  value={password}
+                  onChange={(e) => { setPassword(e.target.value) }}
+                />
               </div>
             </div>
 
             <div className="unique-remember-forgot">
               <div className="unique-remember-me">
-                <input type="checkbox" value="remember-me" id="remember-me" />
-                <label htmlFor="remember-me">Recordar inicio</label>
+                <Form.Check
+                  type="checkbox"
+                  id="show-password"
+                  label="Mostrar contraseña"
+                  onChange={() => setShowPassword(!showPassword)}
+                />
               </div>
 
               <a href="/register">¿No tiene una cuenta? Registrarse</a>
@@ -112,4 +129,3 @@ function Login() {
 }
 
 export default Login;
-

@@ -62,6 +62,7 @@ function Header() {
                                                     <NavDropdown.Item as={Link} to="/userProductList">Lista de Productos</NavDropdown.Item>
                                                     <NavDropdown.Item as={Link} to="/cart">Carrito de Compras</NavDropdown.Item>
                                                 </NavDropdown>
+                                                
                                             )}
                                         </>
                                     ) : (
@@ -71,6 +72,7 @@ function Header() {
                                         </>
                                     )}
                                 </Nav>
+                                <br/>
                                 <Form className="d-flex" onSubmit={handleSearch}>
                                     <Form.Control
                                         type="search"
