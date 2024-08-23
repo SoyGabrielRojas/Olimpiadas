@@ -26,7 +26,7 @@ function Footer() {
                             Links
                             <a href="https://github.com/SoyGabrielRojas/Olimpiadas" className="text-white">Repositorio de GitHub</a>
                             <Link to="/guia" className="text-white">Manual de usuario</Link>
-                            <NavLink href="#" className="text-white">Video de ayuda</NavLink>
+                            <a href="https://drive.google.com/file/d/1jA3oOTcfbCXPob5WZuWWrPpK1wv_lMi3/view?usp=sharing " className="text-white">Video de ayuda</a>
                         </Nav>
                     </Col>
                     <Col>
