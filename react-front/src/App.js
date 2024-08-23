@@ -14,6 +14,7 @@ import Compras from './Compras';
 import EnProcesoDeEnvio from './EnProcesoDeEnvio';
 import ProductosEntregados from './ProductosEntregados';
 import Ventas from './Ventas';
+import GuiaUso from './GuiaUso';
 import Protected from './Protected';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 
@@ -33,7 +34,8 @@ function App() {
           <Route path="/search/:searchTerm" element={<Protected Cmp={SearchProduct} />} />
           <Route path="/userProductList" element={<Protected Cmp={UserProductList} />} />
           <Route path="/cart" element={<Protected Cmp={Cart} />} />
-          <Route path="/compras" element={<Compras />} />
+          <Route path="/compras" element={<Protected Cmp={Compras} />} />
+          <Route path="/guia" element={<GuiaUso />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
         </Routes>

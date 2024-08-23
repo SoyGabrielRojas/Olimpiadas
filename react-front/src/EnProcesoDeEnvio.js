@@ -99,7 +99,7 @@ function EnProcesoDeEnvio() {
                                         onClick={() => cancelPurchase(item.id)}
                                         className="ms-2"
                                     >
-                                        Anular Compra
+                                        Anular
                                     </Button>
                                 </td>
                             </tr>

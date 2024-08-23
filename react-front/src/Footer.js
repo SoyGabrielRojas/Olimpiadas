@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Stack, Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
 function Footer() {
@@ -24,7 +25,7 @@ function Footer() {
                         <Nav className="flex-column fs-5">
                             Links
                             <a href="https://github.com/SoyGabrielRojas/Olimpiadas" className="text-white">Repositorio de GitHub</a>
-                            <NavLink href="#" className="text-white">Manual de usuario</NavLink>
+                            <Link to="/guia" className="text-white">Manual de usuario</Link>
                             <NavLink href="#" className="text-white">Video de ayuda</NavLink>
                         </Nav>
                     </Col>

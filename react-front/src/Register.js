@@ -38,7 +38,7 @@ function Register() {
     }
 
     return (
-        <div>
+        <div className='bg-secondary'>
             <Header />
             <section className="unique-container">
 

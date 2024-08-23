@@ -49,7 +49,7 @@ function Login() {
   }
 
   return (
-    <div>
+    <div className='bg-secondary'>
       <Header />
       <section className="unique-container">
         <div className="unique-image-section">
